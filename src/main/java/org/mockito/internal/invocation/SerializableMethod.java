@@ -85,8 +85,7 @@ public class SerializableMethod implements Serializable, MockitoMethod {
         } catch (NoSuchMethodException e) {
             String message =
                     String.format(
-                        //TODO Format strings should use %n instead of \n
-                            "The method %1$s.%2$s does not exists and you should not get to this point.\n"
+                            "The method %1$s.%2$s does not exists and you should not get to this point.%n"
                                     + "Please report this as a defect with an example of how to reproduce it.",
                             declaringClass, methodName);
             throw new MockitoException(message, e);
