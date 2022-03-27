@@ -5,6 +5,7 @@
 package org.mockito.internal.exceptions.stacktrace;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -85,11 +86,11 @@ public class StackTraceFilter implements Serializable {
             // far as we have to go, assuming that we get there. If, in the rare occasion, we
             // don't, we fall back to the old slow path.
             while (true) {
-                //FIX ME: Add catch of runtime exception then rethrow it, then catch other exceptions
+
                 try {
                     StackTraceElement stackTraceElement =
-                            (StackTraceElement)
-                                    GET_STACK_TRACE_ELEMENT.invoke(JAVA_LANG_ACCESS, target, i);
+                        (StackTraceElement)
+                            GET_STACK_TRACE_ELEMENT.invoke(JAVA_LANG_ACCESS, target, i);
 
                     if (CLEANER.isIn(stackTraceElement)) {
                         if (shouldSkip) {
@@ -98,7 +99,13 @@ public class StackTraceFilter implements Serializable {
                             return stackTraceElement;
                         }
                     }
-                } catch (Exception e) {
+                } catch (IllegalAccessException e) {
+                    // Fall back to slow path
+                    break;
+                } catch (IllegalArgumentException e) {
+                    // Fall back to slow path
+                    break;
+                } catch (InvocationTargetException e) {
                     // Fall back to slow path
                     break;
                 }
