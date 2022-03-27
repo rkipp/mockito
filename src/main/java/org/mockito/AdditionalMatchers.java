@@ -245,7 +245,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>null</code>.
      */
-    public static <T extends Comparable<T>> T gt(T value) {
+    public static <T extends Comparable<T>> T greaterthan(T value) {
         reportMatcher(new GreaterThan<T>(value));
         return null;
     }
@@ -259,8 +259,8 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    //TODO rename to a better descriptive method name
-    public static byte gt(byte value) {
+
+    public static byte greaterthan(byte value) {
         reportMatcher(new GreaterThan<Byte>(value));
         return 0;
     }
@@ -274,7 +274,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static double gt(double value) {
+    public static double greaterthan(double value) {
         reportMatcher(new GreaterThan<Double>(value));
         return 0;
     }
@@ -288,7 +288,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static float gt(float value) {
+    public static float greaterthan(float value) {
         reportMatcher(new GreaterThan<Float>(value));
         return 0;
     }
@@ -302,7 +302,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static int gt(int value) {
+    public static int greaterthan(int value) {
         reportMatcher(new GreaterThan<Integer>(value));
         return 0;
     }
@@ -316,7 +316,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static long gt(long value) {
+    public static long greaterthan(long value) {
         reportMatcher(new GreaterThan<Long>(value));
         return 0;
     }
@@ -330,7 +330,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static short gt(short value) {
+    public static short greaterthan(short value) {
         reportMatcher(new GreaterThan<Short>(value));
         return 0;
     }
