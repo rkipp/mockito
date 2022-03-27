@@ -24,6 +24,7 @@ public class StackTraceFilter implements Serializable {
     private static Method GET_STACK_TRACE_ELEMENT;
 
     static {
+        //FIX ME: Add catch of runtime exception then rethrow it, then catch other exceptions
         try {
             JAVA_LANG_ACCESS =
                     Class.forName("sun.misc.SharedSecrets")
