@@ -17,7 +17,7 @@ import static org.mockito.AdditionalMatchers.find;
 import static org.mockito.AdditionalMatchers.geq;
 import static org.mockito.AdditionalMatchers.greaterthan;
 import static org.mockito.AdditionalMatchers.leq;
-import static org.mockito.AdditionalMatchers.lt;
+import static org.mockito.AdditionalMatchers.lessthan;
 import static org.mockito.AdditionalMatchers.not;
 import static org.mockito.AdditionalMatchers.or;
 import static org.mockito.ArgumentMatchers.eq;
@@ -181,13 +181,13 @@ public class MatchersTest extends TestBase {
 
     @Test
     public void less_than_overloaded() {
-        when(mock.oneArg(lt((byte) 1))).thenReturn("1");
-        when(mock.oneArg(lt(1D))).thenReturn("3");
-        when(mock.oneArg(lt(1F))).thenReturn("4");
-        when(mock.oneArg(lt(1))).thenReturn("5");
-        when(mock.oneArg(lt(1L))).thenReturn("6");
-        when(mock.oneArg(lt((short) 1))).thenReturn("7");
-        when(mock.oneArg(lt(new BigDecimal("1")))).thenReturn("8");
+        when(mock.oneArg(AdditionalMatchers.lessthan((byte) 1))).thenReturn("1");
+        when(mock.oneArg(AdditionalMatchers.lessthan(1D))).thenReturn("3");
+        when(mock.oneArg(AdditionalMatchers.lessthan(1F))).thenReturn("4");
+        when(mock.oneArg(AdditionalMatchers.lessthan(1))).thenReturn("5");
+        when(mock.oneArg(AdditionalMatchers.lessthan(1L))).thenReturn("6");
+        when(mock.oneArg(lessthan((short) 1))).thenReturn("7");
+        when(mock.oneArg(AdditionalMatchers.lessthan(new BigDecimal("1")))).thenReturn("8");
 
         assertEquals("1", mock.oneArg((byte) 0));
         assertEquals(null, mock.oneArg((byte) 1));
@@ -389,7 +389,7 @@ public class MatchersTest extends TestBase {
     @Test
     public void greater_or_equal_matcher() {
         when(mock.oneArg(geq(7))).thenReturn(">= 7");
-        when(mock.oneArg(lt(7))).thenReturn("< 7");
+        when(mock.oneArg(AdditionalMatchers.lessthan(7))).thenReturn("< 7");
 
         assertEquals(">= 7", mock.oneArg(7));
         assertEquals(">= 7", mock.oneArg(8));
@@ -427,7 +427,7 @@ public class MatchersTest extends TestBase {
 
     @Test
     public void less_than_matcher() {
-        when(mock.oneArg(lt(7))).thenReturn("< 7");
+        when(mock.oneArg(AdditionalMatchers.lessthan(7))).thenReturn("< 7");
         when(mock.oneArg(geq(7))).thenReturn(">= 7");
 
         assertEquals("< 7", mock.oneArg(5));

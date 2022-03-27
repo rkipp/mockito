@@ -344,7 +344,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>null</code>.
      */
-    public static <T extends Comparable<T>> T lt(T value) {
+    public static <T extends Comparable<T>> T lessthan(T value) {
         reportMatcher(new LessThan<T>(value));
         return null;
     }
@@ -358,8 +358,8 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    //TODO Change name to something more descriptive
-    public static byte lt(byte value) {
+
+    public static byte lessthan(byte value) {
         reportMatcher(new LessThan<Byte>(value));
         return 0;
     }
@@ -373,7 +373,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static double lt(double value) {
+    public static double lessthan(double value) {
         reportMatcher(new LessThan<Double>(value));
         return 0;
     }
@@ -387,7 +387,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static float lt(float value) {
+    public static float lessthan(float value) {
         reportMatcher(new LessThan<Float>(value));
         return 0;
     }
@@ -401,7 +401,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static int lt(int value) {
+    public static int lessthan(int value) {
         reportMatcher(new LessThan<Integer>(value));
         return 0;
     }
@@ -415,7 +415,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static long lt(long value) {
+    public static long lessthan(long value) {
         reportMatcher(new LessThan<Long>(value));
         return 0;
     }
@@ -429,7 +429,7 @@ public final class AdditionalMatchers {
      *            the given value.
      * @return <code>0</code>.
      */
-    public static short lt(short value) {
+    public static short lessthan(short value) {
         reportMatcher(new LessThan<Short>(value));
         return 0;
     }
