@@ -37,16 +37,15 @@ public abstract class Platform {
 
     public static String describe() {
         String description =
-            //TODO Format strings should use %n instead of \n
                 String.format(
-                        "Java               : %s\n"
-                                + "JVM vendor name    : %s\n"
-                                + "JVM vendor version : %s\n"
-                                + "JVM name           : %s\n"
-                                + "JVM version        : %s\n"
-                                + "JVM info           : %s\n"
-                                + "OS name            : %s\n"
-                                + "OS version         : %s\n",
+                        "Java               : %s%n"
+                                + "JVM vendor name    : %s%n"
+                                + "JVM vendor version : %s%n"
+                                + "JVM name           : %s%n"
+                                + "JVM version        : %s%n"
+                                + "JVM info           : %s%n"
+                                + "OS name            : %s%n"
+                                + "OS version         : %s%n",
                         JAVA_VERSION,
                         JVM_VENDOR,
                         JVM_VENDOR_VERSION,
