@@ -77,6 +77,7 @@ public class SerializableMethod implements Serializable, MockitoMethod {
             return method;
         } catch (SecurityException e) {
             String message =
+                //TODO Format strings should use %n instead of \n
                     String.format(
                             "The method %1$s.%2$s is probably private or protected and cannot be mocked.\n"
                                     + "Please report this as a defect with an example of how to reproduce it.",
