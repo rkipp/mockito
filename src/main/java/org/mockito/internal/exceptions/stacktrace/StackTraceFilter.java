@@ -25,16 +25,30 @@ public class StackTraceFilter implements Serializable {
     private static Method GET_STACK_TRACE_ELEMENT;
 
     static {
-        //FIX ME: Add catch of runtime exception then rethrow it, then catch other exceptions
         try {
             JAVA_LANG_ACCESS =
-                    Class.forName("sun.misc.SharedSecrets")
-                            .getMethod("getJavaLangAccess")
-                            .invoke(null);
+                Class.forName("sun.misc.SharedSecrets")
+                    .getMethod("getJavaLangAccess")
+                    .invoke(null);
             GET_STACK_TRACE_ELEMENT =
-                    Class.forName("sun.misc.JavaLangAccess")
-                            .getMethod("getStackTraceElement", Throwable.class, int.class);
-        } catch (Exception ignored) {
+                Class.forName("sun.misc.JavaLangAccess")
+                    .getMethod("getStackTraceElement", Throwable.class, int.class);
+        } catch (ClassNotFoundException ignored) {
+            // Use the slow computational path for filtering stacktraces if fast path does not exist
+            // in JVM
+        } catch (IllegalAccessException ignored) {
+            // Use the slow computational path for filtering stacktraces if fast path does not exist
+            // in JVM
+        } catch (IllegalArgumentException ignored) {
+            // Use the slow computational path for filtering stacktraces if fast path does not exist
+            // in JVM
+        } catch (NoSuchMethodException ignored) {
+            // Use the slow computational path for filtering stacktraces if fast path does not exist
+            // in JVM
+        } catch (SecurityException ignored) {
+            // Use the slow computational path for filtering stacktraces if fast path does not exist
+            // in JVM
+        } catch (InvocationTargetException ignored) {
             // Use the slow computational path for filtering stacktraces if fast path does not exist
             // in JVM
         }
