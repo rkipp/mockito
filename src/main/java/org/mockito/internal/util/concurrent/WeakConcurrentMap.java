@@ -212,9 +212,9 @@ public class WeakConcurrentMap<K, V> extends ReferenceQueue<K>
 
         @Override
         public boolean equals(Object other) {
-            //TODO Insert casting of other object
             if (other instanceof LatentKey<?>) {
-                return ((LatentKey<?>) other).key == get();
+                LatentKey<?> latentKey = (LatentKey<?>) other;
+                return latentKey.key==get();
             } else {
                 return ((WeakKey<?>) other).get() == get();
             }
