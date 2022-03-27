@@ -141,20 +141,23 @@ public class InlineBytecodeGenerator implements BytecodeGenerator, ClassFileTran
                                         .bind(MockMethodAdvice.Identifier.class, identifier)
                                         .to(MockMethodAdvice.ForEquals.class));
         Method getModule, canRead, redefineModule;
-        //FIX ME: Add catch of runtime exception then rethrow it, then catch other exceptions
         try {
             getModule = Class.class.getMethod("getModule");
             canRead = getModule.getReturnType().getMethod("canRead", getModule.getReturnType());
             redefineModule =
-                    Instrumentation.class.getMethod(
-                            "redefineModule",
-                            getModule.getReturnType(),
-                            Set.class,
-                            Map.class,
-                            Map.class,
-                            Set.class,
-                            Map.class);
-        } catch (Exception ignored) {
+                Instrumentation.class.getMethod(
+                    "redefineModule",
+                    getModule.getReturnType(),
+                    Set.class,
+                    Map.class,
+                    Map.class,
+                    Set.class,
+                    Map.class);
+        } catch (NoSuchMethodException ignored) {
+            getModule = null;
+            canRead = null;
+            redefineModule = null;
+        } catch (SecurityException ignored) {
             getModule = null;
             canRead = null;
             redefineModule = null;
