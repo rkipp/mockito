@@ -37,6 +37,7 @@ public abstract class Platform {
 
     public static String describe() {
         String description =
+            //TODO Format strings should use %n instead of \n
                 String.format(
                         "Java               : %s\n"
                                 + "JVM vendor name    : %s\n"
