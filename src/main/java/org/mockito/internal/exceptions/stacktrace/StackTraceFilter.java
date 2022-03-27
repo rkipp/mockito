@@ -84,6 +84,7 @@ public class StackTraceFilter implements Serializable {
             // far as we have to go, assuming that we get there. If, in the rare occasion, we
             // don't, we fall back to the old slow path.
             while (true) {
+                //FIX ME: Add catch of runtime exception then rethrow it, then catch other exceptions
                 try {
                     StackTraceElement stackTraceElement =
                             (StackTraceElement)
